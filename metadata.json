@@ -1,0 +1,8 @@
+{
+  "name": "gramps",
+  "description": "陈氏族谱数字化修谱平台 - 仿 Supabase 架构的多组织与多项目管理、团队权限协同、PostgreSQL数据库配置与世系图数字化空间。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,796 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', Menlo, monospace;
+  
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* Core Variables (Defined globally to ensure availability) */
+:root {
+  /* Default (Vercel/Zinc) Light Theme */
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Default (Vercel/Zinc) Dark Theme */
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+}
+
+/* --- Supabase Theme --- */
+.theme-supabase {
+  --primary: 154 55% 45%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 154 55% 45%;
+}
+.theme-supabase.dark {
+  --background: 240 5% 10%;
+  --card: 240 5% 12%;
+  --popover: 240 5% 10%;
+  --primary: 154 60% 53%;
+  --primary-foreground: 154 60% 5%;
+  --secondary: 240 4% 16%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 4% 60%;
+  --accent: 240 4% 16%;
+  --border: 240 4% 18%;
+  --input: 240 4% 18%;
+  --ring: 154 60% 53%;
+}
+
+/* --- Slack Theme --- */
+.theme-slack {
+  --primary: 295 50% 30%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 295 50% 30%;
+}
+.theme-slack.dark {
+  --background: 295 20% 8%;
+  --foreground: 295 10% 90%;
+  --card: 295 15% 12%;
+  --popover: 295 20% 8%;
+  --primary: 295 50% 60%;
+  --primary-foreground: 295 50% 10%;
+  --secondary: 295 15% 15%;
+  --muted: 295 15% 15%;
+  --muted-foreground: 295 10% 60%;
+  --accent: 295 15% 15%;
+  --border: 295 15% 18%;
+  --input: 295 15% 18%;
+  --ring: 295 50% 60%;
+}
+
+/* --- VS Code Theme --- */
+.theme-vscode {
+  --primary: 210 100% 40%;
+  --primary-foreground: 0 0% 100%;
+  --ring: 210 100% 40%;
+}
+.theme-vscode.dark {
+  --background: 220 15% 10%;
+  --foreground: 220 10% 85%;
+  --card: 220 15% 13%;
+  --popover: 220 15% 10%;
+  --primary: 210 100% 45%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 15% 18%;
+  --muted: 220 15% 18%;
+  --muted-foreground: 220 10% 60%;
+  --accent: 220 15% 20%;
+  --border: 220 15% 18%;
+  --input: 220 15% 18%;
+  --ring: 210 100% 45%;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+     border-color: hsl(var(--border));
+  }
+}
+
+/* React Grid Layout Custom Styles */
+.react-grid-item.react-grid-placeholder {
+  background: hsl(var(--primary) / 0.1) !important;
+  border: 2px dashed hsl(var(--primary));
+  border-radius: var(--radius);
+  opacity: 0.5;
+}
+
+.react-resizable-handle {
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 50;
+}
+
+.react-grid-item:hover .react-resizable-handle {
+  opacity: 1;
+}
+
+.react-resizable-handle::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  width: 8px;
+  height: 8px;
+  border-right: 3px solid hsl(var(--primary));
+  border-bottom: 3px solid hsl(var(--primary));
+  border-bottom-right-radius: 2px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 9999px; /* Rounded pill shape */
+  border: 2px solid transparent; /* Padding around thumb */
+  background-clip: content-box; /* Ensures background is only inside the border */
+  transition: background-color 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.5);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox Scrollbar */
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+  }
+}
+
+/* =======================================================
+   Genealogy Cloud Space (云谱空间) Theme & Styles
+   ======================================================= */
+.font24 { font-size: 24px; line-height: 1.2; }
+.font20 { font-size: 20px; line-height: 1.3; }
+.font18 { font-size: 18px; line-height: 1.4; }
+.font16 { font-size: 16px; line-height: 1.5; }
+.font14 { font-size: 14px; line-height: 1.5; }
+.font12 { font-size: 12px; line-height: 1.5; }
+.bold { font-weight: 700; }
+.pointer { cursor: pointer; }
+
+.colorTitle { color: hsl(var(--foreground)); }
+.colorText { color: hsl(var(--foreground) / 0.85); }
+.colorTips { color: hsl(var(--muted-foreground)); }
+
+/* Detail Block Main Layout */
+.detailBlock {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px 32px 48px;
+  box-sizing: border-box;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.mainBox {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .mainBox {
+    flex-direction: column;
+  }
+}
+
+.leftBox {
+  flex: 1.15;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.rightBox {
+  flex: 0.85;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Project Info */
+.porjcetInfo {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid hsl(var(--border) / 0.7);
+}
+.projectLogo {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted));
+}
+.projectName {
+  margin-bottom: 12px;
+  color: hsl(var(--foreground));
+  font-weight: 700;
+}
+.primaryName, .primarySurname, .countriesRegions, .remarks {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: hsl(var(--muted-foreground));
+}
+.primaryName span, .primarySurname span, .countriesRegions span, .remarks span {
+  color: hsl(var(--foreground));
+  font-weight: 500;
+}
+
+/* Project User */
+.projectUser {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: hsl(var(--muted) / 0.4);
+  border-radius: 8px;
+}
+.systemUser, .ordinaryUser {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+.role-name {
+  color: hsl(var(--muted-foreground));
+}
+.userNameIsNull {
+  color: hsl(var(--muted-foreground) / 0.7);
+}
+
+/* Project Log */
+.projectLog {
+  margin-bottom: 24px;
+  flex: 1;
+}
+.logTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.title1 {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+.title2 {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+}
+.logTable table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.logTable tr.tr_title td {
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+  border-bottom: 1px solid hsl(var(--border));
+}
+.logTable tr.tr_text td {
+  padding: 10px 12px;
+  font-size: 13px;
+  border-bottom: 1px solid hsl(var(--border) / 0.5);
+  transition: background 0.15s ease;
+}
+.logTable tr.select-hover:hover td {
+  background: hsl(var(--muted) / 0.5);
+  color: hsl(var(--primary));
+}
+.td_date {
+  color: hsl(var(--muted-foreground));
+  text-align: right;
+}
+
+/* Project Open Buttons */
+.projectOpen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid hsl(var(--border) / 0.7);
+}
+.butOpen, .butEdit, .butCopy {
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
+}
+.butOpen {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  border-color: hsl(var(--primary));
+}
+.butOpen:hover {
+  opacity: 0.92;
+}
+.butEdit:hover, .butCopy:hover {
+  background: hsl(var(--muted));
+}
+
+/* Right Box Resources Count */
+.resCount {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.resDiv {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 18px 14px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.resDiv .text1 {
+  font-size: 14px;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 6px;
+}
+.resDiv .text2 {
+  font-size: 15px;
+  color: hsl(var(--foreground));
+  margin-bottom: 8px;
+}
+.resDiv .text2 span {
+  font-size: 24px;
+  color: hsl(var(--primary));
+  font-weight: 700;
+}
+.resDiv .text3 {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground));
+  border-top: 1px dashed hsl(var(--border));
+  padding-top: 6px;
+}
+
+/* Node Count */
+.nodeCount {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.nodeCount .numberBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.nodeCount .numberTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+.nodeCount .numberCount span {
+  font-size: 24px;
+  font-weight: 700;
+  color: hsl(var(--primary));
+}
+.nodeCount .sexBox {
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid hsl(var(--border) / 0.7);
+}
+.nodeCount .sexBox span {
+  color: hsl(var(--foreground));
+  font-weight: 600;
+}
+
+.bottonBox {
+  display: flex;
+  gap: 16px;
+}
+.treeBox {
+  flex: 1;
+  background: hsl(var(--muted) / 0.35);
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid hsl(var(--border) / 0.6);
+}
+.treeBox .title1 {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 4px;
+}
+.treeBox .title2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 10px;
+}
+.treeBox .title3 {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed hsl(var(--border));
+  padding-top: 8px;
+  font-size: 12px;
+}
+.treeBox .man .bold, .treeBox .woman .bold {
+  font-size: 15px;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+}
+.treeBox .man .font14, .treeBox .woman .font14 {
+  font-size: 11px;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Guide Box (新手引导 三步成谱) */
+.guide-box {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 28px 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.guide-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  text-align: center;
+  margin-bottom: 4px;
+}
+.guide-desc {
+  font-size: 13px;
+  color: hsl(var(--muted-foreground));
+  text-align: center;
+  margin-bottom: 24px;
+}
+.w-100 { width: 100%; }
+.flex-col { display: flex; flex-direction: column; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-a-center { align-items: center; }
+.flex-j-between { justify-content: space-between; }
+
+.item-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 8px;
+}
+.step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 12px;
+  text-align: center;
+}
+.step-box {
+  width: 100%;
+  min-height: 105px;
+  position: relative;
+}
+.btn-item {
+  width: 100%;
+  padding: 10px 12px;
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  text-align: center;
+  transition: all 0.2s ease;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.btn-item:hover {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.btn-item.border-none {
+  background: hsl(var(--muted) / 0.5);
+  border: 1px dashed hsl(var(--border));
+}
+.enter-tips {
+  font-size: 11px;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+  margin-top: 4px;
+}
+.enter-tips .link {
+  color: hsl(var(--primary));
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+.enter-tips .link:hover {
+  text-decoration: underline;
+}
+
+.diamond-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+}
+.diamond {
+  height: 2px;
+  background: hsl(var(--border));
+  position: relative;
+}
+.diamond::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid hsl(var(--primary));
+  border-bottom: 2px solid hsl(var(--primary));
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .guide-box .w-100 {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .diamond-box {
+    display: none;
+  }
+}
+
+/* Data Analysis (数据分析) */
+.overViewCont {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.sumTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: hsl(var(--foreground));
+  margin-bottom: 20px;
+}
+.proconts {
+  display: flex;
+  gap: 24px;
+}
+@media (max-width: 1024px) {
+  .proconts {
+    flex-direction: column;
+  }
+}
+.blocks {
+  flex: 1.2;
+  background: hsl(var(--muted) / 0.2);
+  border: 1px solid hsl(var(--border) / 0.7);
+  border-radius: 10px;
+  padding: 18px;
+  position: relative;
+}
+.blocksLine {
+  flex: 0.8;
+}
+.chartsTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+  margin-bottom: 14px;
+}
+.chartsCont {
+  width: 100%;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.showNameAndPx {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+.showNameAndPx h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: hsl(var(--foreground));
+  line-height: 1;
+}
+.showNameAndPx p {
+  font-size: 14px;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  margin-top: 4px;
+}
+
+/* React Flow Theming & Dark Mode */
+.react-flow {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground));
+}
+
+.react-flow__pane {
+  background-color: hsl(var(--background)) !important;
+}
+
+.react-flow__controls {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-flow__controls button {
+  background-color: transparent !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+.react-flow__controls button:last-child {
+  border-bottom: none !important;
+}
+
+.react-flow__controls button:hover {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(var(--foreground)) !important;
+}
+
+.react-flow__controls button svg {
+  fill: currentColor !important;
+}
+
+.react-flow__minimap {
+  background-color: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--border)) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-flow__minimap-mask {
+  fill: hsl(var(--background) / 0.75) !important;
+}
+
